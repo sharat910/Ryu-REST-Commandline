@@ -8,38 +8,32 @@ meters:
         meter_id: 1
         flags: ['KBPS','BURST','STATS']
         bands:
-            - band:
-                type: 'DSCP_REMARK'
-                rate: 2000000 #2Gbps
-                burst_size: 1500
-                prec_level: 1
-            - band:
-                type: 'DROP'
-                rate: 4000000 #4Gbps
-                burst_size: 1500
+            - type: 'DSCP_REMARK'
+              rate: 2000000 #2Gbps
+              burst_size: 1500
+              prec_level: 1
+            - type: 'DROP'
+              rate: 4000000 #4Gbps
+              burst_size: 1500
     - meter:
         meter_id: 2
         flags: ['KBPS','BURST','STATS']
         bands:
-            - band:
-                type: 'DSCP_REMARK'
-                rate: 1000000 #1Gbps
-                burst_size: 1500
-                prec_level: 1
-            - band:
-                type: 'DROP'
-                rate: 3000000 #3Gbps
-                burst_size: 1500
+            - type: 'DSCP_REMARK'
+              rate: 1000000 #1Gbps
+              burst_size: 1500
+              prec_level: 1
+            - type: 'DROP'
+              rate: 3000000 #3Gbps
+              burst_size: 1500
     - meter:
         meter_id: 3
         flags: ['KBPS','BURST','STATS']
         bands:
-            - band:
-                type: 'DSCP_REMARK'
-                rate: 1000000 #1Gbps
-                burst_size: 1500
-                prec_level: 1
-            - band:
-                type: 'DROP'
-                rate: 2000000 #4Gbps
-                burst_size: 1500
+            - type: 'DSCP_REMARK'
+              rate: 1000000 #1Gbps
+              burst_size: 1500
+              prec_level: 1
+            - type: 'DROP'
+              rate: 2000000 #4Gbps
+              burst_size: 1500

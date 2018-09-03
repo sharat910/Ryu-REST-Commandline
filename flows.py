@@ -2,16 +2,11 @@ import requests
 from config_loader import get_config
 from meters import find_meter
 
-
-def get_action_list(yaml_actions):
-    return [a['action'] for a in yaml_actions]
-
 def dict_builder(dpid,table_id,flow):
     d = {}
     d['dpid'] = dpid
     d['table_id'] = table_id
     d.update(flow['flow'])
-    d['actions'] = get_action_list(flow['flow']['actions'])
     return d
 
 def find_flow(flow_config, flow_name):
@@ -33,7 +28,7 @@ class FlowHandler(object):
 
     def flow_operation(self,operation,flow_name):
         flow = find_flow(self.flow_config,flow_name)
-        flow_dict = dict_builder(flow)
+        flow_dict = dict_builder(self.dpid, self.flow_config['table_id'],flow)
         self._flow_op(flow_dict,operation)
 
     def _flow_op(self,flow_dict,op):

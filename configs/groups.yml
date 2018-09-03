@@ -1,0 +1,49 @@
+urls:
+    add: '/stats/groupentry/add'
+    mod: '/stats/groupentry/modify'
+    delete: '/stats/groupentry/delete'
+
+groups:
+    - group:
+        name: 'video'
+        group_id: 1
+        type: "ALL"
+        buckets:
+            - actions:
+              - type: "EXPERIMENTER"
+                experimenter: 4278190082
+                data: "/wAACAABAAA="
+                data_type: "base64"
+              - type: "SET_QUEUE"
+                queue_id: 1
+              - type: "OUTPUT"
+                port: 4294967039
+    - group:
+        name: 'mice'
+        group_id: 2
+        type: "ALL"
+        buckets:
+            - actions:
+              - type: "EXPERIMENTER"
+                experimenter: 4278190082
+                data: "/wAACAACAAA="
+                data_type: "base64"
+              - type: "SET_QUEUE"
+                queue_id: 2
+              - type: "OUTPUT"
+                port: 4294967039
+
+    - group:
+        name: 'elephant'
+        group_id: 3
+        type: "ALL"
+        buckets:
+            - actions:
+              - type: "EXPERIMENTER"
+                experimenter: 4278190082
+                data: "/wAACAADAAA="
+                data_type: "base64"
+              - type: "SET_QUEUE"
+                queue_id: 3
+              - type: "OUTPUT"
+                port: 4294967039

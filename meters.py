@@ -2,15 +2,10 @@ import requests
 from config_loader import get_config
 
 
-def get_band_list(yaml_bands):
-    print(yaml_bands)
-    return [a['band'] for a in yaml_bands]
-
 def dict_builder(dpid,meter):
     d = {}
     d['dpid'] = dpid
     d.update(meter['meter'])
-    d['bands'] = get_band_list(meter['meter']['bands'])
     return d
 
 def find_meter(meter_config, meter_id):
@@ -31,7 +26,7 @@ class MeterHandler(object):
 
     def meter_operation(self,operation,meter_id):
         meter = find_meter(self.meter_config,meter_id)
-        meter_dict = dict_builder(meter)
+        meter_dict = dict_builder(self.dpid, meter)
         self._meter_op(meter_dict,operation)        
 
     def _meter_op(self,meter_dict,op):
@@ -42,6 +37,5 @@ class MeterHandler(object):
 
     def load_all_meters(self):
         for meter in self.meter_config['meters']:
-            # print(meter)
             meter_dict = dict_builder(self.dpid,meter)
             self._meter_op(meter_dict,'add')

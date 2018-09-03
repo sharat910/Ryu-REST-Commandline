@@ -15,12 +15,8 @@ flows:
         match:
             in_port: 4
         actions:
-            # - action:
-            #     type: 'METER'
-            #     meter_id: 1
-            - action:
-                type: 'OUTPUT'
-                port: 7
+            - type: 'GROUP'
+              group_id: 1
     - flow:
         name: 'mice'
         priority: 100
@@ -29,12 +25,8 @@ flows:
         match:
             in_port: 5
         actions:
-            # - action:
-            #     type: 'METER'
-            #     meter_id: 1
-            - action:
-                type: 'OUTPUT'
-                port: 7
+            - type: 'GROUP'
+              group_id: 2
 
     - flow:
         name: 'elephant'
@@ -44,9 +36,5 @@ flows:
         match:
             in_port: 6
         actions:
-            # - action:
-            #     type: 'METER'
-            #     meter_id: 1
-            - action:
-                type: 'OUTPUT'
-                port: 7
+            - type: 'GROUP'
+              group_id: 3

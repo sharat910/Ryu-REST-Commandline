@@ -3,14 +3,15 @@ import argparse
 from config_loader import get_config
 from flows import FlowHandler
 from meters import MeterHandler
+from groups import GroupHandler
 # from stats_collector import collect_stats
 
 def usage():
     print("Error in command")
     print("=============USAGE===================")
-    print("python main.py (loadallconfig | loadallflows | loadallmeters | deleteallflows)")
+    print("python main.py (loadallconfig | loadallflows | loadallgroups | loadallmeters | deleteallflows)")
     print("or")
-    print("python main.py (add | mod | delete) (flow | meter) (flow_name | meter_id)")
+    print("python main.py (add | mod | delete) (flow | group | meter) (flow_name | meter_id)")
     print("or")
     print("python main.py attach (flow_name) (meter | queue) (meter_id | queue_id)")
 
@@ -18,23 +19,25 @@ if __name__ == '__main__':
     app_config = get_config('app')
     flow_handler = FlowHandler(app_config)
     meter_handler = MeterHandler(app_config)
+    group_handler = GroupHandler(app_config)
 
     #parser = argparse.ArgumentParser(description='Ryu REST API interactor for QoS Experiments')
 
     if len(sys.argv) == 2:
         command = sys.argv[1]
         if command == "loadallconfig":
+            group_handler.load_all_groups()
             flow_handler.load_all_flows()
             meter_handler.load_all_meters()
         elif command == "loadallflows":
+            group_handler.load_all_groups()
             flow_handler.load_all_flows()
+        elif command == "loadallgroups":
+            group_handler.load_all_groups()
         elif command == "deleteallflows":
             flow_handler.delete_all_flows()
         elif command == "loadallmeters":
             meter_handler.load_all_meters()
-        elif command == "collectstats":
-            pass
-            # collect_stats()
         else:
             usage()
 
@@ -48,6 +51,11 @@ if __name__ == '__main__':
             elif entity == "meter":
                 meter_id = sys.argv[3]
                 meter_handler.meter_operation(operation,meter_id)
+            elif entity == "group":
+                group_name = sys.argv[3]
+                group_handler.group_operation(operation,group_name)
+            else:
+                usage()
         else:
             usage()
 
