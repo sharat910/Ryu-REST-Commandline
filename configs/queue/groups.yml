@@ -1,0 +1,6 @@
+urls:
+    add: '/stats/groupentry/add'
+    mod: '/stats/groupentry/modify'
+    delete: '/stats/groupentry/delete'
+
+groups: []

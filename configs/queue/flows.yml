@@ -1,0 +1,46 @@
+urls:
+    add: '/stats/flowentry/add'
+    mod: '/stats/flowentry/modify_strict'
+    delete: '/stats/flowentry/delete_strict'
+    delete_all: '/stats/flowentry/clear/<dpid>'
+
+table_id: 0
+append_dpid: true
+flows:
+    - flow:
+        name: 'video'
+        priority: 100
+        cookie: 1
+        cookie_mask: 3
+        match:
+            in_port: 4
+        actions:
+            - type: 'SET_QUEUE'
+              queueid: 1
+            - type: 'OUTPUT'
+              port: 7
+    - flow:
+        name: 'mice'
+        priority: 100
+        cookie: 2
+        cookie_mask: 3
+        match:
+            in_port: 5
+        actions:
+            - type: 'SET_QUEUE'
+              queueid: 2
+            - type: 'OUTPUT'
+              port: 7
+
+    - flow:
+        name: 'elephant'
+        cookie: 3
+        cookie_mask: 3
+        priority: 100
+        match:
+            in_port: 6
+        actions:
+            - type: 'SET_QUEUE'
+              queueid: 3
+            - type: 'OUTPUT'
+              port: 7

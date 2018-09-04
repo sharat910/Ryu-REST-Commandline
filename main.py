@@ -9,7 +9,8 @@ from groups import GroupHandler
 def usage():
     print("Error in command")
     print("=============USAGE===================")
-    print("python main.py (loadallconfig | loadallflows | loadallgroups | loadallmeters | deleteallflows)")
+    print("python main.py (loadallconfig | loadallflows | loadallgroups |\
+     loadallmeters | deleteallflows | deleteallgroups )")
     print("or")
     print("python main.py (add | mod | delete) (flow | group | meter) (flow_name | meter_id)")
     print("or")
@@ -34,6 +35,8 @@ if __name__ == '__main__':
             flow_handler.load_all_flows()
         elif command == "loadallgroups":
             group_handler.load_all_groups()
+        elif command == "deleteallgroups":
+            group_handler.delete_all_groups()
         elif command == "deleteallflows":
             flow_handler.delete_all_flows()
         elif command == "loadallmeters":

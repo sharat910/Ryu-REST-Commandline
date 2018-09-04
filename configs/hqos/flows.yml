@@ -17,6 +17,8 @@ flows:
         actions:
             - type: 'GROUP'
               group_id: 1
+            # - type: 'OUTPUT'
+            #   port: 7
     - flow:
         name: 'mice'
         priority: 100

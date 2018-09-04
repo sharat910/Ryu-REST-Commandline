@@ -38,3 +38,8 @@ class GroupHandler(object):
         for group in self.group_config['groups']:
             group_dict = dict_builder(self.dpid,group)
             self._group_op(group_dict,'add')
+    
+    def delete_all_groups(self):
+        for group in self.group_config['groups']:
+            group_dict = dict_builder(self.dpid,group)
+            self._group_op(group_dict,'delete')
